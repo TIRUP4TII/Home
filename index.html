@@ -4,6 +4,7 @@
         <title>Tirupatii</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+li{font-size:24px;}
 .btn {
   background-color: DodgerBlue;
   border: none;
@@ -62,6 +63,7 @@ overflow-x:hidden;
                 width: 100vw;
                 background-color: #6644ff;
                 position: fixed;
+		font-size:24px;
             }
 
             #Search {
@@ -80,6 +82,7 @@ overflow-x:hidden;
                 height: 100%;
                 width: 100%;
                 padding-left: 15px;
+		font-size:20px;
             }
 
             #Search:hover {
@@ -129,12 +132,14 @@ overflow-x:hidden;
 
             #BtnSrch {
                 height: 90%;
-                width: 70px;
+                width: 90px;
                 background-color: white;
                 border: none;
                 top: 50%;
                 left: 90%;
                 transition: 0.3s;
+		text-align:center;
+		font-size:20px;
             }
 
             #BtnSrch:hover {
@@ -144,12 +149,13 @@ overflow-x:hidden;
             #Title {
                 height: 90%;
                 top: 50%;
-                left: 35px;
-                width: 70px;
+                left: 50px;
+                width: 100px;
                 background-color: transparent;
                 color: white;
                 border: none;
                 text-align: center;
+		font-size:24px;
             }
 
             #Blnk {
@@ -342,6 +348,55 @@ function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+</script>
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+  // Add smooth scrolling to all links
+  $("button").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
 </script>
     </body>
 
