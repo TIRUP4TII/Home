@@ -1,0 +1,243 @@
+<html>
+
+    <head>
+        <title>Tirupatii</title>
+        <style>
+            body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+            }
+
+            .Cmn {
+                position: absolute;
+                transform: translate(-50%, -50%);
+            }
+
+            #TopBar {
+                height: 45px;
+                width: 100vw;
+                background-color: #6644ff;
+                position: absolute;
+            }
+
+            #Search {
+                height: 90%;
+                width: 50%;
+                background-color: white;
+                left: 50%;
+                top: 50%;
+                transition: 1s width, 0.3s border-radius, 1s left;
+                border-radius: 20px;
+            }
+
+            #Search>input {
+                background-color: transparent;
+                border: none;
+                height: 100%;
+                width: 100%;
+                padding-left: 15px;
+            }
+
+            #Search:hover {
+                width: 55%;
+            }
+
+            #StrtScrn {
+                height: 50vw;
+                width: 50vw;
+                background-color: #ffa144;
+                top: 50%;
+                left: 50%;
+                transition: 1s height, 1s width, 0.6s opacity;
+                border-radius: 10px;
+                max-height: 90vh;
+                max-width: 90vh;
+            }
+
+            #Close {
+                height: 45px;
+                width: 45px;
+                background-color: transparent;
+                color: black;
+                top: 20px;
+                left: 95%;
+                border: none;
+                position: fixed;
+                transform: translate(-50%, -50%)
+            }
+
+            #Items {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            #Items li a {
+                padding: 12px;
+                text-decoration: none;
+                color: black;
+                display: block
+            }
+
+            #Items li a:hover {
+                background-color: #eee;
+            }
+
+            #BtnSrch {
+                height: 90%;
+                width: 70px;
+                background-color: white;
+                border: none;
+                top: 50%;
+                left: 90%;
+                transition: 0.3s;
+            }
+
+            #BtnSrch:hover {
+                width: 100px;
+            }
+
+            #Title {
+                height: 90%;
+                top: 50%;
+                left: 35px;
+                width: 70px;
+                background-color: transparent;
+                color: white;
+                border: none;
+                text-align: center;
+            }
+
+            #Blnk {
+                height: 100vh;
+                width: 100vw;
+                background-color: rgba(0, 0, 0, 0.75);
+                position:fixed;
+            }
+            
+            .items{
+                float:right;
+                border:none;
+                background-color:transparent;
+                margin-right:10%;
+            }
+
+            @media only screen and (max-width: 600px) {
+                #Search {
+                    width: 75%;
+                    border-radius: 2px;
+                }
+
+                #Search:hover {
+                    width: 80%;
+                }
+
+                #BtnSrch {
+                    top: 170%;
+                    background-color: gray;
+                    border-radius: 5px;
+                    display:none;
+                }
+
+                #BtnSrch:hover {
+                    width: 100px;
+                }
+            }
+
+            @media only screen and (max-width: 400px) {
+                #StrtScrn {
+                    height: 90vw;
+                    width: 90vw;
+                }
+            }
+
+            @media only screen and (max-width: 550px) {
+                #Search {
+                    left: 60%;
+                }
+            }
+
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            function myFunction() {
+                // Declare variables
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("Srch");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("Items");
+                li = ul.getElementsByTagName("li");
+
+                // Loop through all list items, and hide those who don't match the search query
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+
+        </script>
+        <script>
+            $(document).ready(function() {
+                setInterval(function() {
+                    $("#StrtScrn").animate({
+                        height: '75vw',
+                        width: '75vw',
+                    });
+                }, 3000);
+                $("#Close").click(function() {
+                    $("#StrtScrn").animate({
+                        height: '18.75vw',
+                        width: '18.75vw',
+                    }, 1000)
+                    setTimeout(function() {
+                        $("#StrtScrn").css({
+                            opacity: '0',
+                            display: 'none'
+                        });
+                        $("#Blnk").css({
+                            display: 'none'
+                        });
+                        $("#BtnSrch").css({
+                            display: 'block'
+                        });
+                        $("#Srch").removeAttr("disabled")
+                    }, 1200)
+                })
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <div id="Blnk">
+            <div id="StrtScrn" class="Cmn">
+                <img src="https://i.postimg.cc/C5WWmW7r/Logo-Smaller.png" style="height:90%;width:100%;position:absolute;transform:translate(-50%,-50%);top:50%; left:50%;">
+                <button id="Close">
+                    X
+                </button>
+            </div>
+        </div>
+        <div id="TopBar">
+            <input type="text" id="Title" class="Cmn" value="Tirupatii" disabled>
+            <div id="Search" class="Cmn">
+                <input type="text" placeholder="Search" id="Srch" disabled>
+            </div>
+            <button onclick="myFunction()" id="BtnSrch" class="Cmn">Search</button>
+        </div>
+        <br><br><br><br>
+        <ul id="Items">
+            <li><a href="#">LVD Jeans<input disabled value="Cost depends on product" class="items"></a></li>
+            <li><a href="#">LVD Shirt</a></li>
+            <li><a href="#">Sketchers Shoes</a></li>
+            <li><a href="#">Nike Shoes</a></li>
+            <li><a href="#">Bossini Jacket</a></li>
+            <li><a href="#">Blue Jacket</a></li>
+        </ul>
+    </body>
+
+</html>
