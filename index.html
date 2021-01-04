@@ -2,11 +2,54 @@
 
     <head>
         <title>Tirupatii</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  cursor: pointer;
+  font- : 16px;
+}
+
+*{outline:none;}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+</style>
         <style>
+	    html {
+  scroll-behavior: smooth;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 30px;
+  z-index: 99;
+  font- : 16px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  height:45px;
+  width:45px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+  background-color: #FF2600;
+}
             body {
                 height: 100%;
                 width: 100%;
                 margin: 0;
+overflow-x:hidden;
             }
 
             .Cmn {
@@ -18,7 +61,7 @@
                 height: 45px;
                 width: 100vw;
                 background-color: #6644ff;
-                position: absolute;
+                position: fixed;
             }
 
             #Search {
@@ -47,12 +90,12 @@
                 height: 50vw;
                 width: 50vw;
                 background-color: #ffa144;
-                top: 50%;
+                top: 54%;
                 left: 50%;
                 transition: 1s height, 1s width, 0.6s opacity;
                 border-radius: 10px;
-                max-height: 90vh;
-                max-width: 90vh;
+                max-height: 85vh;
+                max-width: 85vh;
             }
 
             #Close {
@@ -113,14 +156,16 @@
                 height: 100vh;
                 width: 100vw;
                 background-color: rgba(0, 0, 0, 0.75);
-                position:fixed;
+                position: fixed;
             }
-            
-            .items{
-                float:right;
-                border:none;
-                background-color:transparent;
-                margin-right:10%;
+
+            .items {
+                float: right;
+                border: none;
+                background-color: transparent;
+                margin-right: 10%;
+padding-left:10px;
+width:220px;
             }
 
             @media only screen and (max-width: 600px) {
@@ -137,12 +182,15 @@
                     top: 170%;
                     background-color: gray;
                     border-radius: 5px;
-                    display:none;
+                    display: none;
+		    left:85%;
                 }
 
                 #BtnSrch:hover {
                     width: 100px;
                 }
+
+		.Btn{display:none;}
             }
 
             @media only screen and (max-width: 400px) {
@@ -154,7 +202,7 @@
 
             @media only screen and (max-width: 550px) {
                 #Search {
-                    left: 60%;
+                    left: 58%;
                 }
             }
 
@@ -181,6 +229,7 @@
             }
 
         </script>
+
         <script>
             $(document).ready(function() {
                 setInterval(function() {
@@ -209,7 +258,6 @@
                     }, 1200)
                 })
             });
-
         </script>
     </head>
 
@@ -217,7 +265,7 @@
         <div id="Blnk">
             <div id="StrtScrn" class="Cmn">
                 <img src="https://i.postimg.cc/C5WWmW7r/Logo-Smaller.png" style="height:90%;width:100%;position:absolute;transform:translate(-50%,-50%);top:50%; left:50%;">
-                <button id="Close">
+                <button id="Close"  onclick="openFullscreen()">
                     X
                 </button>
             </div>
@@ -231,13 +279,70 @@
         </div>
         <br><br><br><br>
         <ul id="Items">
-            <li><a href="#">LVD Jeans<input disabled value="Cost depends on product" class="items"></a></li>
-            <li><a href="#">LVD Shirt</a></li>
-            <li><a href="#">Sketchers Shoes</a></li>
-            <li><a href="#">Nike Shoes</a></li>
-            <li><a href="#">Bossini Jacket</a></li>
-            <li><a href="#">Blue Jacket</a></li>
+            <li><a href="#">LVD Jeans<input disabled value="" class="items"></a></li>
+            <li><a href="#">LVD Shirt<input disabled value=" " class="items"></a></li>
+            <li><a href="#">Sketchers Shoes<input disabled value="   " class="items"></a></li>
+            <li><a href="#">Nike Shoes<input disabled value="   " class="items"></a></li>
+            <li><a href="#">Bossini Jacket<input disabled value="   " class="items"></a></li>
+            <li><a href="#">Blue Jacket<input disabled value="   " class="items"></a></li>
+            <li><a href="#">LVD Jeans<input disabled value=" " class="items"></a></li>
+            <li><a href="#">LVD Shirt<input disabled value=" " class="items"></a></li>
+            <li><a href="#">Sketchers Shoes<input disabled value="   " class="items"></a></li>
+            <li><a href="#">Nike Shoes<input disabled value="   " class="items"></a></li>
+            <li><a href="#">Bossini Jacket<input disabled value="   " class="items"></a></li>
+            <li><a href="#">Blue Jacket<input disabled value="   " class="items"></a></li>
+            <li><a href="#">LVD Jeans<input disabled value=" " class="items"></a></li>
+            <li><a href="#">LVD Shirt<input disabled value=" " class="items"></a></li>
+            <li><a href="#">Sketchers Shoes<input disabled value="   " class="items"></a></li>
+            <li><a href="#">Nike Shoes<input disabled value="   " class="items"></a></li>
+            <li><a href="#">Bossini Jacket<input disabled value="   " class="items"></a></li>
+            <li><a href="#">Blue Jacket<input disabled value="   " class="items"></a></li>
         </ul>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<a><button class="btn" style="position:fixed; transform:translate(-50%,-50%); top:95%; left:90%"><i class="fa fa-download"></i> Download App<br>for windows</button></a>
+<script>
+var elem = document.documentElement;
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+}
+</script>
+<script>
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
     </body>
 
 </html>
